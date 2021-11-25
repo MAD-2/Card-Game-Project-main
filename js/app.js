@@ -13,9 +13,24 @@ function shuffle(array) {
 }
 
 // varible
+const deck = document.querySelector("#deck");
+const stars = document.querySelectorAll("#heart li");
+
+const moves = document.querySelector("#moves");
+const timer = document.querySelector("#timer");
+const restart = document.querySelector("#restart");
+const shuffle = document.querySelectorAll("#deck-li");
+let array = Array.from(shuffle)
+let cardOpen=[];
+let moveCounter = 0;
+let timerout = timer;
+let match = 0;
+let time = 0;
+let timeId = 0;
 
 
-        //functions
+
+
 
 // add opend card
 
