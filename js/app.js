@@ -28,7 +28,13 @@ let match = 0;
 let time = 0;
 let timeId = 0;
 
-
+//reShufflu
+function reShufflu(){
+    let shuffled = shuffle(array);
+    for(let card of shuffle){
+        deck.appendChild(card);
+    }
+}
 
 
 
@@ -46,7 +52,7 @@ function cardOpen() {
         }
     }
 };
-
+//=======================
 // cardes matched
 
 function matched(){
