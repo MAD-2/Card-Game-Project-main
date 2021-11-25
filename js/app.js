@@ -103,16 +103,17 @@ function enable(){
         }
     });
 }
-
+// add move============
 function moveCounter(){    
     moves++;    
     counter.innerHTML = moves;
 }
 
-
-function moveCounter(){
-    moves++;
-    counter.innerHTML = moves;
+// reset move===========
+function resetMove(){
+    moveCounter=0;
+    moves.innerHTML=0;
+}
 
 // setting rates based on moves
     if (moves > 8 && moves < 12){
