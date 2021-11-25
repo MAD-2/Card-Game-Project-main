@@ -36,6 +36,14 @@ function reShufflu(){
     }
 }
 
+//function click
+function validClick(click){
+    return click.classList.contains("card")&&!click.classList.contains("card");
+    includes(click)&&openedCards.length<2;
+}
+    
+
+
 
 
 // add opend card
