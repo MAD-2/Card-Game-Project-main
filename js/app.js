@@ -45,7 +45,10 @@ function validClick(click){
  function toggle(card){
      card.classList.toggle("open");
  }   
-
+// puchcard===========
+function puchcard(card){
+    openedCards.push(card)
+}
 
 
 
