@@ -75,8 +75,8 @@ function resetMatch(){
 }
 function resetGame(){
     stopTimer();
-    resetMove();
-    resetStars();
+    resetMove()
+    resetStars()
     resetMatch()
     reShufflu()
     
