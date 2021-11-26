@@ -66,16 +66,15 @@ function cardOpen() {
         }
     }
 };
-//=======================
-// cardes matched
 
-function matched(){
-    openedCards[0].classList.add("match");
-    openedCards[1].classList.add("match");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
-    openedCards = [];
+// reset matched============
+function resetMatch(){
+    for (let itme of deck.children){
+        itme.classList.remove("match","open","show")
+    }
 }
+
+
 
 // cards not matched 
 
