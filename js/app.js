@@ -73,7 +73,14 @@ function resetMatch(){
         itme.classList.remove("match","open","show")
     }
 }
-
+function resetGame(){
+    stopTimer();
+    resetMove();
+    resetStars();
+    resetMatch()
+    reShufflu()
+    
+}
 
 
 // cards not matched 
