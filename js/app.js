@@ -125,6 +125,13 @@ function resetMove(){
 function removeStars(){
     stars.remove()
 }
+//reset stars=========
+function resetStars(){
+    for(let star of stars){
+if(star.style.display="none")
+srar.style.display="inline"
+    }
+}
 
 
 // setting rates based on moves
