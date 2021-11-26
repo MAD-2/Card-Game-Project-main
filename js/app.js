@@ -12,7 +12,7 @@ function shuffle(array) {
     return array;
 }
 
-// varible
+// varible===================
 const deck = document.querySelector("#deck");
 const stars = document.querySelectorAll("#heart li");
 
@@ -28,7 +28,7 @@ let match = 0;
 let time = 0;
 let timeId = 0;
 
-//reShufflu
+//reShufflu==============
 function reShufflu(){
     let shuffled = shuffle(array);
     for(let card of shuffle){
@@ -36,12 +36,15 @@ function reShufflu(){
     }
 }
 
-//function click
+//function click==========
 function validClick(click){
     return click.classList.contains("card")&&!click.classList.contains("card")
     includes(click)&&openedCards.length<2;
 }
-    
+ //function toggle========
+ function toggle(card){
+     card.classList.toggle("open");
+ }   
 
 
 
