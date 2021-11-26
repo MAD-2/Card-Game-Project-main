@@ -121,6 +121,12 @@ function resetMove(){
     moves.innerHTML=0;
 }
 
+// remove stars=========
+function removeStars(){
+    stars.remove()
+}
+
+
 // setting rates based on moves
     if (moves > 8 && moves < 12){
         for( i= 0; i < 3; i++){
@@ -136,7 +142,7 @@ function resetMove(){
             }
         }
     }
-} 
+ 
 
 
 //timer
