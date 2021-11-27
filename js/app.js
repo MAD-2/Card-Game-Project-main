@@ -186,7 +186,7 @@ function startTimer(){
      time++;
      if(sec<10){timer.innerHTML=`${min};0${sec}`}
  }  
-    else{timer.innerHTML=`${min}:${sec}`}
+    else {timer.innerHTML=`${min}:${sec}`}
 
      if(min<2)
      {timer.innerHTML=`0${min}:${sec}`}   
@@ -211,3 +211,4 @@ deck.addEventListener("click",(event)=>{
         }
     }
 })
+restart.addEventListener("click",restart);
