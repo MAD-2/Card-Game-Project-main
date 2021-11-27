@@ -36,6 +36,30 @@ function reShufflu(){
     }
 }
 
+//============
+var cards = document.querySelectorAll(".card");
+const deck = document.getElementById("deck");
+const timer = document.getElementById("timer");
+const restart = document.getElementById("restart");
+const heart = document.getElementById("heart");
+const move = document.getElementById("move");
+const result = document.getElementById("result");
+const playagain = document.getElementById("playagain");
+
+let move=0;
+let matchnum=0;
+let time=0;
+let TimeIsOn=true;
+
+//cards===========
+cards.forEach(item=>{
+    item.addEventListener('click', function(event){
+        if(event.target !== event.currentTarget) console.log("child click");
+        else cardmove(event)
+
+    })
+})
+
 //function click==========
 function validClick(click){
     return click.classList.contains("card")&&!click.classList.contains("card")
