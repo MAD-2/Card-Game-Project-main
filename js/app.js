@@ -52,21 +52,6 @@ function puchcard(card){
 
 
 
-// add opend card
-
-function cardOpen() {
-    openedCards.push(this);
-    var len = openedCards.length;
-    if(len === 2){
-        moveCounter();
-        if(openedCards[0].type === openedCards[1].type){
-            matched();
-        } else {
-            unmatched();
-        }
-    }
-};
-
 // reset matched============
 function resetMatch(){
     for (let itme of deck.children){
