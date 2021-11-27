@@ -177,18 +177,8 @@ function startTimer(){
             minTimer.innerHTML=`${min}`
         }
     }timerCount();
-},1000);
-        second++;
-        if(second == 60){
-            minute++;
-            second = 0;
-        }
-        if(minute == 60){
-            hour++;
-            minute = 0;
-        }
-    },1000);
-}
+}, 1000);
+      
 
 //modal
 let modal = document.getElementById("popup1")
