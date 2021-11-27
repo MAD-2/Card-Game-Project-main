@@ -113,8 +113,9 @@ function startTimer(){
         else{
             minTimer.innerHTML=`${min}`
         }
-    }timeCount();
+    }  timerCount();
 }, 1000);
+
  //time count======
  function timeCount(){
      let sec = time%60;
@@ -127,6 +128,14 @@ function startTimer(){
      if(min<2)
      {timer.innerHTML=`0${min}:${sec}`}   
      else{timer.innerHTML = `${min}:${sec}`}
+
+     //stop time=========
+     function stopTimer(){
+         timerout = true;
+         clearInterval(timerId);
+         time=0;
+         timerCount();
+     }
 
 
 //deck============
