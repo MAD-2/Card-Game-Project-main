@@ -158,13 +158,26 @@ srar.style.display="inline"
  
 
 
-//timer
-var second = 0, minute = 0;
-var timer = document.querySelector(".timer");
+//timer==========
+
 var interval;
 function startTimer(){
-    interval = setInterval(function(){
-        timer.innerHTML = minute+"mins "+second+"secs";
+    timerout = false;
+    timeId = setInterval(() =>{
+        if(sec<10){
+            secTimer.innerHTML=`0${sec}`
+        }
+        else{
+            secTimer.innerHTML=`${sec}`
+        }
+        if(min<10){
+            minTimer.innerHTML=`0${min}`
+        }
+        else{
+            minTimer.innerHTML=`${min}`
+        }
+    }timerCount();
+},1000);
         second++;
         if(second == 60){
             minute++;
