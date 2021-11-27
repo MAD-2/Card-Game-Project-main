@@ -160,7 +160,7 @@ srar.style.display="inline"
 
 //timer==========
 
-var interval;
+
 function startTimer(){
     timerout = false;
     timeId = setInterval(() =>{
@@ -176,7 +176,7 @@ function startTimer(){
         else{
             minTimer.innerHTML=`${min}`
         }
-    }timerCount();
+    }time();
 }, 1000);
       
 
