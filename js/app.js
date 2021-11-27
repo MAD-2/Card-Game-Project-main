@@ -79,7 +79,8 @@ function resetGame(){
     resetStars()
     resetMatch()
     reShufflu()
-    
+    match=0;
+    openedCards=[];
 }
 
 
@@ -176,33 +177,21 @@ function startTimer(){
         else{
             minTimer.innerHTML=`${min}`
         }
-    }time();
+    }timeCount();
 }, 1000);
-      
+ //time count======
+ function timeCount(){
+     let sec = time%60;
+     let min = Math.floor(time/60);
+     time++;
+     if(sec<10){timer.innerHTML=`${min};0${sec}`}
+ }  
+    else{timer.innerHTML=`${min}:${sec}`}
 
-//modal
-let modal = document.getElementById("popup1")
-//stars list
- let starsList = document.querySelectorAll(".stars li");
-//close icon in modal
- let closeicon = document.querySelector(".close");
-//congratulations when all cards match, show modal and moves, time and rating
-function congratulations(){
-    if (matchedCard.length == 16){
-        clearInterval(interval);
-        finalTime = timer.innerHTML;
-    //show congratulations modal
-    modal.classList.add("show");
-    //declare star rating variable
-    var starRating = document.querySelector(".stars").innerHTML;
-    //showing move, rating, time on modal
-    document.getElementById("finalMove").innerHTML = moves;
-    document.getElementById("starRating").innerHTML = starRating;
-    document.getElementById("totalTime").innerHTML = finalTime;
-    //closeicon on modal
-    closeModal();
-    };
-}
+     if(min<2)
+     {timer.innerHTML=`0${min}:${sec}`}   
+     else{timer.innerHTML = `${min}:${sec}`}
+
 
 //close icon on modal
 function closeModal(){
