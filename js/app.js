@@ -69,21 +69,6 @@ function resetGame(){
 }
 
 
-// cards not matched 
-
-function unmatched(){
-    openedCards[0].classList.add("unmatched");
-    openedCards[1].classList.add("unmatched");
-    disable();
-    setTimeout(function(){
-        openedCards[0].classList.remove("show", "open", "unmatched");
-        openedCards[1].classList.remove("show", "open", "unmatched");
-        enable();
-        openedCards = [];
-    },1100);
-}
-
-
 // add move============
 function moveCounter(){    
     moves++;    
