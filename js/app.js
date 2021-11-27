@@ -193,24 +193,21 @@ function startTimer(){
      else{timer.innerHTML = `${min}:${sec}`}
 
 
-//close icon on modal
-function closeModal(){
-    closeicon.addEventListener("click", function(e){
-        modal.classList.remove("show");
-        startGame();
-    });
-}
-//for player to play Again 
-function playAgain(){
-    modal.classList.remove("show");
-    startGame();
-}
-
-
-
-        // event listeners
-
-//My restart button
-<div class="restart" onclick="startGame()">
-   <i class="fa fa-repeat"></i>
-</div>
+//deck============
+deck.addEventListener("click",(event)=>{
+    target = event.target;
+    if(validClick(target)){
+        if(timerout){
+            initTime();
+        }
+        toggle(toggle);
+        puchcard(toggle);
+        if(openCard.length==2){
+            checkMatch();
+            addMove();
+            if(moveCounter==16 || moveCounter==24){
+                removeStars();
+            }
+        }
+    }
+})
