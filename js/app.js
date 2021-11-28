@@ -49,6 +49,7 @@ const playagain = document.getElementById("playagain");
 let move=0;
 let matchnum=0;
 let time=0;
+let m=[];
 let TimeIsOn=true;
 
 //cards===========
@@ -58,7 +59,14 @@ cards.forEach(item=>{
         else cardmove(event)
 
     })
-})
+});
+
+//cardmove==========
+card.forEach(itme => {
+    itme.addEventListener('click',function(event){
+        if(event.target !== event.currentTarget)console.log("child clicked")
+    })
+});
 
 //function click==========
 function validClick(click){
