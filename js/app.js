@@ -12,180 +12,159 @@ function shuffle(array) {
     return array;
 }
 
-// varible===================
+// variable
 const deck = document.querySelector("#deck");
 const stars = document.querySelectorAll("#heart li");
-
 const moves = document.querySelector("#moves");
 const timer = document.querySelector("#timer");
 const restart = document.querySelector("#restart");
-const shuffle = document.querySelectorAll("#deck-li");
-let array = Array.from(shuffle)
-let cardOpen=[];
-let moveCounter = 0;
-let timerout = timer;
+const cardToShuffle = document.querySelectorAll("#deck li");
+let arr = Array.from(cardToShuffle)
+let openCards = [];
+let movesCounter = 0;
+let timerOut = true;
 let match = 0;
 let time = 0;
-let timeId = 0;
+let timerId = 0;
 
-//reShufflu==============
-function reShufflu(){
-    let shuffled = shuffle(array);
-    for(let card of shuffle){
+//function
+reShuffle()
+//==============================================
+function reShuffle(){
+    
+    let shuffled =  shuffle(arr);
+    for(let card of shuffled){
         deck.appendChild(card);
     }
-}
+  }
+//==============================================
 
-//============
-var cards = document.querySelectorAll(".card");
-const deck = document.getElementById("deck");
-const timer = document.getElementById("timer");
-const restart = document.getElementById("restart");
-const heart = document.getElementById("heart");
-const move = document.getElementById("move");
-const result = document.getElementById("result");
-const playagain = document.getElementById("playagain");
-
-let move=0;
-let matchnum=0;
-let time=0;
-let m=[];
-let TimeIsOn=true;
-
-//cards===========
-cards.forEach(item=>{
-    item.addEventListener('click', function(event){
-        if(event.target !== event.currentTarget) console.log("child click");
-        else cardmove(event)
-
-    })
-});
-
-//cardmove==========
-card.forEach(itme => {
-    itme.addEventListener('click',function(event){
-        if(event.target !== event.currentTarget)console.log("child clicked")
-    })
-});
-
-//function click==========
 function validClick(click){
-    return click.classList.contains("card")&&!click.classList.contains("card")
-    includes(click)&&openedCards.length<2;
-}
- //function toggle========
- function toggle(card){
-     card.classList.toggle("open");
- }   
-// puchcard===========
-function puchcard(card){
-    openedCards.push(card)
+    return click.classList.contains("card")&&!click.classList.contains("match")&&!openCards.includes(click)&&openCards.length <2;
 }
 
-
-
-// reset matched============
-function resetMatch(){
-    for (let itme of deck.children){
-        itme.classList.remove("match","open","show")
+//==============================================
+function addMove(){
+    movesCounter++;
+    moves.innerHTML = movesCounter;
+}
+//==============================================
+function resetMove(){
+    movesCounter=0;
+    moves.innerHTML = 0;
+}
+//==============================================
+function removeStars(){
+    if(movesCounter==8){
+        stars[0].style.display = "none";
+    }
+    if(movesCounter==16){
+        stars[1].style.display = "none";
+    }
+    if(movesCounter==24){
+        stars[2].style.display = "none";
+        resetGame();
     }
 }
-function resetGame(){
-    stopTimer();
-    resetMove()
-    resetStars()
-    resetMatch()
-    reShufflu()
-    match=0;
-    openedCards=[];
-}
-
-
-// add move============
-function moveCounter(){    
-    moves++;    
-    counter.innerHTML = moves;
-}
-
-// reset move===========
-function resetMove(){
-    moveCounter=0;
-    moves.innerHTML=0;
-}
-
-// remove stars=========
-function removeStars(){
-    stars.remove()
-}
-//reset stars=========
+//=========================
 function resetStars(){
     for(let star of stars){
-if(star.style.display="none")
-srar.style.display="inline"
+        if(star.style.display=="none"){
+            star.style.display="inline"
+        }
     }
 }
 
+//==============================================
+function resetMatch(){
+    for(let item of deck.children){
+        item.classList.remove("match","open")
+    }
+}
+//==============================================
+function resetGame(){
+    stopTimer()
+    resetMove();
+    resetStars()
+    resetMatch()
+    reShuffle()
+    match=0;
+    openCards=[];
+}
+//==============================================
+function checkMatch(){
+    
+    if(openCards[0].children[0].className === openCards[1].children[0].className){
+        console.log(openCards);
+        openCards[0].classList.add("match");
+        openCards[1].classList.add("match");
+        openCards = [];
+        match++;
 
+        if(match==8){
+            setTimeout(() => {
+                win()
+        }, 1000); 
+        }
+    }
+    else{
+        setTimeout(()=>{
+            openCards[0].classList.toggle("open");
+            openCards[1].classList.toggle("open");
+            openCards = [];
+        },1000)
+    }
+}
+ function win(){
+    alert('You Win')
+}
 
-//timer==========
+//==============================================
+function timerCount(){
 
-
-function startTimer(){
-    timerout = false;
-    timeId = setInterval(() =>{
-        if(sec<10){
-            secTimer.innerHTML=`0${sec}`
+        let min = Math.floor(time/60);
+        let sec = time%60;
+        time++;
+        if(sec <10){
+            timer.innerHTML=`${min}:0${sec}`
         }
-        else{
-            secTimer.innerHTML=`${sec}`
+        else {
+            timer.innerHTML=`${min}:${sec}`
         }
-        if(min<10){
-            minTimer.innerHTML=`0${min}`
-        }
-        else{
-            minTimer.innerHTML=`${min}`
-        }
-    }  timerCount();
+}
+//==============================================
+function initTime(){
+timerOut = false;
+timerId = setInterval(() => {
+    timerCount();
 }, 1000);
-
- //time count======
- function timeCount(){
-     let sec = time%60;
-     let min = Math.floor(time/60);
-     time++;
-     if(sec<10){timer.innerHTML=`${min};0${sec}`}
- }  
-    else {timer.innerHTML=`${min}:${sec}`}
-
-     if(min<2)
-     {timer.innerHTML=`0${min}:${sec}`}   
-     else{timer.innerHTML = `${min}:${sec}`}
-
-     //stop time=========
-     function stopTimer(){
-         timerout = true;
-         clearInterval(timerId);
-         time=0;
-         timerCount();
-     }
-
-
-//deck============
+}
+// ======================================
+  function stopTimer(){
+    timerOut = true;
+    clearInterval(timerId);
+    time=0;
+    timerCount();
+    
+}
+//==============================================
 deck.addEventListener("click",(event)=>{
     target = event.target;
     if(validClick(target)){
-        if(timerout){
+        if(timerOut){
             initTime();
         }
-        toggle(toggle);
-        puchcard(toggle);
-        if(openCard.length==2){
-            checkMatch();
-            addMove();
-            if(moveCounter==16 || moveCounter==24){
-                removeStars();
-            }
+    target.classList.toggle("open")
+    openCards.push(target);
+
+    if(openCards.length ==2){
+        checkMatch();
+        addMove();
+        if(movesCounter >= 8 && match<8){
+            removeStars();
         }
     }
+   }
 })
-restart.addEventListener("click",restart);
+
+restart.addEventListener("click",resetGame);
